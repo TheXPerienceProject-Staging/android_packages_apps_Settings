@@ -176,7 +176,7 @@
 
     <!-- Battery Info: Voltage -->
     <string name="battery_voltage">Voltage</string>
-    <string name="battery_voltage_not_available">@string/battery_cycle_count_not_available</string>
+    <string name="battery_voltage_not_available" translatable="false">@string/battery_cycle_count_not_available</string>
 
     <!-- Battery Info: Charge Counter -->
     <string name="battery_charge_counter_summary">%1$d mAh</string>
@@ -201,4 +201,8 @@
     <string name="refresh_rate_vrr_summary">Automatically lower the refresh rate when the display is idle, to save power.</string>
     <string name="refresh_rate_footer">A higher refresh rate makes the display smoother, but increases power consumption.</string>
     <string name="keywords_refresh_rate">refresh, rate, smooth, 60hz, 90hz, 120hz, 144hz</string>
+
+    <!-- Status bar Icon Manager -->
+    <string name="icon_manager_title">Icon manager</string>
+    <string name="icon_manager_summary">Control visibility of status bar icons</string>
 </resources>
