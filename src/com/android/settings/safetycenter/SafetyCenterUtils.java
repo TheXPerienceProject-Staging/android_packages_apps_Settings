@@ -38,6 +38,7 @@ import com.android.settings.biometrics.fingerprint.FingerprintProfileStatusPrefe
 import com.android.settings.dashboard.DashboardFragment;
 import com.android.settings.notification.LockScreenNotificationPreferenceController;
 import com.android.settings.privacy.PrivacyDashboardFragment;
+import com.android.settings.security.applock.AppLockSettingsPreferenceController;
 import com.android.settings.security.ChangeProfileScreenLockPreferenceController;
 import com.android.settings.security.LockUnificationPreferenceController;
 import com.android.settings.security.VisiblePatternProfilePreferenceController;
@@ -52,6 +53,8 @@ import java.util.List;
  * A class with helper method used in logic involving safety center.
  */
 public final class SafetyCenterUtils {
+
+    private static final String APP_LOCK_PREF_KEY = "app_lock";
 
     /**
      * Returns preference controllers related to advanced security entries.
@@ -79,6 +82,8 @@ public final class SafetyCenterUtils {
                 .add(new CombinedBiometricProfileStatusPreferenceController(context, lifecycle));
         controllers.add(new PreferenceCategoryController(context, WORK_PROFILE_SECURITY_CATEGORY)
                 .setChildren(profileSecurityControllers));
+        controllers.add(new AppLockSettingsPreferenceController(
+                context, APP_LOCK_PREF_KEY, host, lifecycle));
         controllers.addAll(profileSecurityControllers);
         return controllers;
     }

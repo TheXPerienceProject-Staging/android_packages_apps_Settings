@@ -98,6 +98,10 @@ android_library {
         "setupdesign",
         "androidx.lifecycle_lifecycle-runtime",
         "androidx.lifecycle_lifecycle-viewmodel",
+        // External dependencies
+        "androidx.fragment_fragment",
+        "androidx.fragment_fragment-ktx",
+        "androidx.preference_preference-ktx",
         "guava",
         "jsr305",
         "net-utils-framework-common",
@@ -124,6 +128,9 @@ android_library {
         "androidx.room_room-runtime",
         "SystemUIUnfoldLib",
         "mx.xperience.framework",
+        "kotlin-stdlib",
+        "kotlinx_coroutines_android",
+        "kotlinx_coroutines",
     ],
 
     plugins: ["androidx.room_room-compiler-plugin"],
