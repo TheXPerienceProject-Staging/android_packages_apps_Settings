@@ -75,6 +75,12 @@
         android:fragment="com.android.settings.deviceinfo.batteryinfo.BatteryInfoFragment"
         settings:keywords="@string/keywords_battery_info"/>
 
+    <Preference
+	android:key="statusbar_battery"
+        android:title="@string/battery_percent_title"
+        android:summary="@string/battery_percent_summary"
+        android:fragment="com.android.settings.fuelgauge.StatusBarBatterySettings"/>
+
     <com.android.settingslib.widget.FooterPreference
         android:key="power_usage_footer"
         android:title="@string/battery_footer_summary"
