@@ -303,4 +303,5 @@ public class FakeFeatureFactory extends FeatureFactory {
     public WifiFeatureProvider getWifiFeatureProvider() {
         return mWifiFeatureProvider;
     }
+
 }

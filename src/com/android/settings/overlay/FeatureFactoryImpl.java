@@ -372,4 +372,5 @@ public class FeatureFactoryImpl extends FeatureFactory {
         }
         return mWifiFeatureProvider;
     }
+
 }

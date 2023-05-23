@@ -133,6 +133,7 @@ public class FakeFeatureFactory extends FeatureFactory {
         mAccessibilityMetricsFeatureProvider = mock(AccessibilityMetricsFeatureProvider.class);
         mAdvancedVpnFeatureProvider = mock(AdvancedVpnFeatureProvider.class);
         mWifiFeatureProvider = mock(WifiFeatureProvider.class);
+
     }
 
     @Override
@@ -289,4 +290,5 @@ public class FakeFeatureFactory extends FeatureFactory {
     public WifiFeatureProvider getWifiFeatureProvider() {
         return mWifiFeatureProvider;
     }
+
 }

@@ -187,4 +187,5 @@ class FakeFeatureFactory : FeatureFactory() {
     override fun getWifiFeatureProvider(): WifiFeatureProvider {
         TODO("Not yet implemented")
     }
+
 }
