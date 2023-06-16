@@ -30,8 +30,8 @@
     <!-- About phone screen, status item label  [CHAR LIMIT=40] -->
     <string name="build_channel">Channel</string>
     <!-- About phone CLO revision [CHAR LIMIT=100] -->
-    <string name="clo_revision">Clo revision</string>
-    <string name="clo_sys_vend">System | vendor</string>
+    <string name="clo_revision">CLO revision</string>
+    <string name="clo_sys_vend">System | Vendor</string>
     <!-- About to show Device name -->
     <string name="about_device_name">Device</string>
     <string name="homepage_widget_battery_percent">percent</string>
@@ -48,8 +48,8 @@
     <string name="build_is_official_title">#official</string>
     <string name="build_is_community_title" translatable="false">#homebrew</string>
     <string name="device_info_platform_version" translatable="false">14 | fourteen | UpsideDownCake</string>
-    <string name="device_desc_category_title">Device Banner</string>    
-    <string name="device_info_hw">Hardware info</string>    
+    <string name="device_desc_category_title">Device Banner</string>
+    <string name="device_info_hw">Hardware info</string>
     <string name="maintainer_summary">by %s</string>
     <string name="unknown_maintainer">by Unknown</string>
     <string name="about_xperience_device">Device</string>
@@ -189,5 +189,9 @@
     <string name="battery_maximum_capacity">Maximum capacity</string>
     <string name="battery_maximum_capacity_summary">%1$d mAh (%2$d%%)</string>
     <string name="battery_maximum_capacity_not_available">@string/battery_cycle_count_not_available</string>
+
+    <!-- Smart 5G -->
+    <string name="smart_5g_title">Smart 5G</string>
+    <string name="smart_5g_summary">Automatically switch between 5G and 4G to reduce battery consumption</string>
 
 </resources>
