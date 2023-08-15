@@ -269,6 +269,12 @@
             android:fragment="com.android.settings.xperience.StatusbarIcons" />-->
 
         <Preference
+            android:key="android.customization.sb_data"
+            android:title="@string/theme_customization_data_title"
+            android:summary="@string/theme_customization_data_summary"
+            android:fragment="com.android.settings.xperience.DataStyles" />
+
+        <Preference
             android:key="android.theme.customization.signal_icon"
             android:title="@string/theme_customization_signal_icon_title"
             android:summary="@string/theme_customization_icon_pack_summary"
