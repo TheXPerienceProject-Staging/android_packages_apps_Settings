@@ -32,12 +32,10 @@ import android.view.View;
 import com.android.settings.R;
 import com.android.settings.Utils;
 import com.android.settings.dashboard.DashboardFragment;
-import com.android.settings.deviceinfo.BluetoothAddressPreferenceController;
 import com.android.settings.deviceinfo.BuildNumberPreferenceController;
 import com.android.settings.deviceinfo.DeviceNamePreferenceController;
 import com.android.settings.deviceinfo.FccEquipmentIdPreferenceController;
 import com.android.settings.deviceinfo.FeedbackPreferenceController;
-import com.android.settings.deviceinfo.IpAddressPreferenceController;
 import com.android.settings.deviceinfo.ManualPreferenceController;
 import com.android.settings.deviceinfo.PhoneNumberPreferenceController;
 import com.android.settings.deviceinfo.RegulatoryInfoPreferenceController;
@@ -69,6 +67,8 @@ import android.content.IntentFilter;
 
 import com.android.internal.telephony.IccCardConstants;
 import com.android.internal.telephony.TelephonyIntents;
+
+import com.android.settings.preferences.ui.mtxInfoPreferenceController;
 
 @SearchIndexable
 public class MyDeviceInfoFragment extends DashboardFragment
@@ -113,7 +113,6 @@ public class MyDeviceInfoFragment extends DashboardFragment
     @Override
     public void onStart() {
         super.onStart();
-        initHeader();
     }
 
     @Override
@@ -164,9 +163,7 @@ public class MyDeviceInfoFragment extends DashboardFragment
                 fragment.getLifecycle();
         final SlotSimStatus slotSimStatus = new SlotSimStatus(context, executor, lifecycleObject);
 
-        controllers.add(new IpAddressPreferenceController(context, lifecycle));
         controllers.add(new WifiMacAddressPreferenceController(context, lifecycle));
-        controllers.add(new BluetoothAddressPreferenceController(context, lifecycle));
         controllers.add(new RegulatoryInfoPreferenceController(context));
         controllers.add(new SafetyInfoPreferenceController(context));
         controllers.add(new ManualPreferenceController(context));
@@ -175,6 +172,7 @@ public class MyDeviceInfoFragment extends DashboardFragment
         controllers.add(new UptimePreferenceController(context, lifecycle));
         controllers.add(new SoftwareVersionPreferenceController(context));
         controllers.add(new StorageSizePreferenceController(context));
+        controllers.add(new mtxInfoPreferenceController(context));
 
         Consumer<String> imeiInfoList = imeiKey -> {
             ImeiInfoPreferenceController imeiRecord =

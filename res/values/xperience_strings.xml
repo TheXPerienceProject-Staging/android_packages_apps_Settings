@@ -31,6 +31,26 @@
     <string name="build_channel">Channel</string>
     <!-- About to show Device name -->
     <string name="about_device_name">Device</string>
+    <string name="homepage_widget_battery_percent">percent</string>
+    <string name="homepage_widget_battery_charge">Charging</string>
+    <string name="homepage_widget_battery_discharge">Discharging</string>
+    <string name="homepage_widget_battery_title">Battery</string>
+    <string name="homepage_widget_storage_title">Storage</string>
+    <string name="default_user">User</string>
+    <string name="top_level_settings_title">Settings</string>
+    <string name="search_button_text_title">Search</string>
+    <string name="firmware_name_text">XPerience</string>
+    <string name="firmware_build_type_title">Build type</string>
+    <string name="firmware_build_summary_title">By maintainer</string>
+    <string name="build_is_official_title">#official</string>
+    <string name="build_is_community_title">#homebrew</string>
+    <string name="maintainer_summary">by %s</string>
+    <string name="unknown_maintainer">by someone</string>
+    <string name="device_info_platform_version">14 | fourteen | UpsideDownCake</string>
+    <string name="about_xperience_device">Device</string>
+    <string name="device_header_info_category_title">Build type</string>
+    <string name="device_info_hw_sw_more">More</string>
+    <string name="device_info_security_patch">Security update</string>
 
     <!-- Hardware info -->
     <!-- Label for device's hardware platform value [CHAR LIMIT=40] -->
