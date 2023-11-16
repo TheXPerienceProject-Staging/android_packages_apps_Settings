@@ -99,4 +99,7 @@
     <string name="ambient_notification_light_color_automatic_title">Notification color</string>
     <string name="pulse_ambient_light_color">When pulsing, use</string>
 
+    <!-- Auto pin confirm -->
+    <string name="lock_screen_auto_pin_confirm_summary_custom">Unlock automatically if you input a correct PIN. This is slightly less secure than tapping Enter to confirm.</string>
+
 </resources>
