@@ -52,10 +52,6 @@ class mtxInfoPreferenceController(context: Context) : AbstractPreferenceControll
         return getPropertyOrDefault(PROP_XPERIENCE_BUILD_VERSION)
     }
 
-    private fun getXPerienceStorage(): String {
-        return SystemProperties.get(PROP_XPERIENCE_RAM, "0gb") + "/" + SystemProperties.get(PROP_XPERIENCE_STORAGE, "0gb")
-    }
-
     private fun getXPerienceChipset(): String {
         return getPropertyOrDefault(PROP_XPERIENCE_CHIPSET)
     }
@@ -100,7 +96,7 @@ class mtxInfoPreferenceController(context: Context) : AbstractPreferenceControll
         val releaseType = getPropertyOrDefault(PROP_XPERIENCE_RELEASETYPE).lowercase()
         val XPerienceMaintainer = getXPerienceMaintainer(releaseType)
         val isOfficial = releaseType == "official"
-        
+
         val hwInfoPreference = screen.findPreference<LayoutPreference>(KEY_HW_INFO)!!
         val swInfoPreference = screen.findPreference<LayoutPreference>(KEY_SW_INFO)!!
         val sw2InfoPreference = screen.findPreference<LayoutPreference>(KEY_SW2_INFO)!!
@@ -119,7 +115,6 @@ class mtxInfoPreferenceController(context: Context) : AbstractPreferenceControll
         hwInfoPreference.apply {
             findViewById<TextView>(R.id.device_name).text = getDeviceName()
             findViewById<TextView>(R.id.device_chipset).text = getXPerienceChipset()
-            findViewById<TextView>(R.id.device_storage).text = getXPerienceStorage()
             findViewById<TextView>(R.id.device_battery_capacity).text = getXPerienceBattery()
             findViewById<TextView>(R.id.device_resolution).text = getXPerienceResolution()
             findViewById<TextView>(R.id.device_name_model).text = getDeviceName()
@@ -140,7 +135,7 @@ class mtxInfoPreferenceController(context: Context) : AbstractPreferenceControll
         swInfoPreference.apply {
             findViewById<TextView>(R.id.android_version_summary).text = mContext.getString(R.string.device_info_platform_version)
         }
-        
+
         sw2InfoPreference.apply {
             findViewById<TextView>(R.id.security_patch_summary).text = getXPerienceSecurity()
             findViewById<TextView>(R.id.kernel_info_summary).text = DeviceInfoUtils.getFormattedKernelVersion(mContext)
@@ -150,7 +145,6 @@ class mtxInfoPreferenceController(context: Context) : AbstractPreferenceControll
             R.id.android_version_details to Intent().setComponent(ComponentName("com.android.settings", "com.android.settings.Settings\$FirmwareVersionActivity"))
            // R.id.chipset_info to Intent().setComponent(ComponentName("com.android.settings", "com.android.settings.Settings\$DevRunningServicesActivity")),
           //  R.id.display_info to Intent().setComponent(ComponentName("com.android.settings", "com.android.settings.Settings\$DisplaySettingsActivity")),
-           // R.id.storage_info to Intent().setComponent(ComponentName("com.android.settings", "com.android.settings.Settings\$StorageDashboardActivity"))
        )
 
         clickMap.forEach { (id, intent) ->
@@ -173,8 +167,7 @@ class mtxInfoPreferenceController(context: Context) : AbstractPreferenceControll
         private const val KEY_SW_INFO = "my_device_sw_header"
         private const val KEY_SW2_INFO = "my_device_sw2_header"
         private const val KEY_DEVICE_INFO = "my_device_info_header"
-        
-        private const val KEY_STORAGE = "device_storage"
+
         private const val KEY_CHIPSET = "device_chipset"
         private const val KEY_BATTERY = "device_battery_capacity"
         private const val KEY_DISPLAY = "device_resolution"
@@ -186,8 +179,6 @@ class mtxInfoPreferenceController(context: Context) : AbstractPreferenceControll
         private const val PROP_XPERIENCE_BUILD_TYPE = "ro.xpe.channeltype"
         private const val PROP_XPERIENCE_BUILD_VERSION = "ro.xperience.build.version"
         private const val PROP_XPERIENCE_CHIPSET = "ro.xpe.chipset"
-        private const val PROP_XPERIENCE_STORAGE = "ro.xpe.storage"
-        private const val PROP_XPERIENCE_RAM = "ro.xpe.ram"
         private const val PROP_XPERIENCE_BATTERY = "ro.xpe.battery"
         private const val PROP_XPERIENCE_DISPLAY = "ro.xpe.display_resolution"
         private const val PROP_XPERIENCE_SECURITY = "ro.build.version.security_patch"
