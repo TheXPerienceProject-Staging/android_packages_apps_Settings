@@ -17,14 +17,18 @@
 
 package com.android.settings.preferences.ui
 
+import android.app.AlertDialog
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.SystemProperties
+import android.provider.Settings
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.view.LayoutInflater
 import android.view.View
 import androidx.preference.Preference
 import androidx.preference.PreferenceScreen
@@ -94,48 +98,63 @@ class mtxInfoPreferenceController(context: Context) : AbstractPreferenceControll
         super.displayPreference(screen)
 
         val releaseType = getPropertyOrDefault(PROP_XPERIENCE_RELEASETYPE).lowercase()
-        val XPerienceMaintainer = getXPerienceMaintainer(releaseType)
+        val xperienceMaintainer = getXPerienceMaintainer(releaseType)
         val isOfficial = releaseType == "official"
 
         val hwInfoPreference = screen.findPreference<LayoutPreference>(KEY_HW_INFO)!!
-        val sw2InfoPreference = screen.findPreference<LayoutPreference>(KEY_SW2_INFO)!!
-        val deviceInfoPreference = screen.findPreference<LayoutPreference>(KEY_DEVICE_INFO)!!
-        val aboutHwInfoView: View = hwInfoPreference.findViewById(R.id.about_device_hardware)
-        val hwInfoView: View = hwInfoPreference.findViewById(R.id.device_hardware)
-        val phoneImage: View = hwInfoPreference.findViewById(R.id.phone_image_container)
-        val blurView: View = hwInfoPreference.findViewById(R.id.blurView)
+        val swInfoPreference = screen.findPreference<LayoutPreference>(KEY_DEVICE_INFO)!!
+        val statusPreference = screen.findPreference<Preference>(KEY_BUILD_STATUS)!!
+        val deviceText = swInfoPreference.findViewById<TextView>(R.id.device_name_model)
+       // val editBtn = swInfoPreference.findViewById<TextView>(R.id.edit_device_name_model)*/
 
-        deviceInfoPreference.apply {
-            findViewById<TextView>(R.id.firmware_version).text = "XPerience" + " " + getXPerienceVersion()
-            findViewById<TextView>(R.id.firmware_build_summary).text = XPerienceMaintainer
-            findViewById<TextView>(R.id.build_variant_title).text = getXPerienceBuildStatus(releaseType)
+        statusPreference.setTitle(getXPerienceBuildStatus(releaseType))
+        statusPreference.setSummary(xperienceMaintainer)
+        statusPreference.setIcon(if (isOfficial) R.drawable.verified else R.drawable.verified)
+
+        val settingsDeviceName = Settings.Global.getString(
+            mContext.contentResolver,
+            Settings.Global.DEVICE_NAME
+        )
+
+        if (!settingsDeviceName.isNullOrBlank()) {
+            deviceText.text = settingsDeviceName
         }
+
+        //editBtn.setOnClickListener {
+        //    showEditDialog(deviceText)
+        //}
 
         hwInfoPreference.apply {
-            findViewById<TextView>(R.id.device_name).text = getDeviceName()
             findViewById<TextView>(R.id.device_chipset).text = getXPerienceChipset()
+            findViewById<TextView>(R.id.device_storage).text = DeviceInfoUtil.getTotalRam() + " | " + DeviceInfoUtil.getStorageTotal(mContext)
             findViewById<TextView>(R.id.device_battery_capacity).text = getXPerienceBattery()
-            findViewById<TextView>(R.id.device_resolution).text = getXPerienceResolution()
-            findViewById<TextView>(R.id.device_name_model).text = getDeviceName()
+            findViewById<TextView>(R.id.device_resolution).text =  getXPerienceResolution()
         }
+    }
 
-        aboutHwInfoView.setOnClickListener {
-            if (hwInfoView.visibility == View.VISIBLE) {
-                hwInfoView.visibility = View.GONE
-                blurView.visibility = View.GONE
-                phoneImage.visibility = View.VISIBLE
-            } else {
-                hwInfoView.visibility = View.VISIBLE
-                blurView.visibility = View.VISIBLE
-                phoneImage.visibility = View.GONE
+    private fun showEditDialog(tv: TextView) {
+        val layoutInflater = LayoutInflater.from(mContext)
+        val promptView = layoutInflater.inflate(R.layout.edit_text_dialog, null)
+        val editText = promptView.findViewById<EditText>(R.id.editText)
+        val currentDeviceName = Settings.Global.getString(
+            mContext.contentResolver,
+            Settings.Global.DEVICE_NAME
+        )
+        editText.hint = currentDeviceName
+        AlertDialog.Builder(mContext)
+            .setTitle(R.string.edit_device_name_title)
+            .setView(promptView)
+            .setPositiveButton(android.R.string.ok) { _, _ ->
+                val deviceName = editText.text.toString().trim()
+                Settings.Global.putString(
+                    mContext.contentResolver,
+                    Settings.Global.DEVICE_NAME,
+                    deviceName
+                )
+                tv.text = deviceName
             }
-        }
-
-        sw2InfoPreference.apply {
-            findViewById<TextView>(R.id.security_patch_summary).text = getXPerienceSecurity()
-            findViewById<TextView>(R.id.kernel_info_summary).text = DeviceInfoUtils.getFormattedKernelVersion(mContext)
-        }
-
+            .setNegativeButton(android.R.string.cancel, null)
+            .show()
     }
 
     override fun isAvailable(): Boolean {
@@ -148,13 +167,7 @@ class mtxInfoPreferenceController(context: Context) : AbstractPreferenceControll
 
     companion object {
         private const val KEY_HW_INFO = "my_device_hw_header"
-        private const val KEY_SW2_INFO = "my_device_sw2_header"
         private const val KEY_DEVICE_INFO = "my_device_info_header"
-
-        private const val KEY_CHIPSET = "device_chipset"
-        private const val KEY_BATTERY = "device_battery_capacity"
-        private const val KEY_DISPLAY = "device_resolution"
-
         private const val PROP_XPERIENCE_VERSION = "ro.xpe.modversion"
         private const val PROP_XPERIENCE_RELEASETYPE = "ro.xpe.releasetype"
         private const val PROP_XPERIENCE_MAINTAINER = "ro.xpe.maintainer"
