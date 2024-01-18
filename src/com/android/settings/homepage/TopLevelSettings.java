@@ -354,7 +354,7 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
         //Log.d("PreferenceLogging", "Setting up layout for preference key: " + key);
 
         Set<String> topPreferences = new HashSet<>(Arrays.asList(
-                "top_level_crdroid",
+                "top_level_network",
                 "top_level_system", 
                 "top_level_apps",
                 "top_level_accessibility",
@@ -363,7 +363,6 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
         ));
 
         Set<String> middlePreferences = new HashSet<>(Arrays.asList(
-                "top_level_network",
                 "top_level_battery", 
                 "top_level_security",
                 "top_level_privacy", 
