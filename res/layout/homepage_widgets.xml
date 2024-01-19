@@ -69,8 +69,7 @@
                 android:textSize="13sp"
                 android:textColor="@color/mtx_text_color_secondary"
                 android:layout_below="@+id/battery_percent"
-                android:layout_marginTop="4dp"
-                android:layout_marginBottom="9dp"/>
+                android:layout_marginTop="4dp"/>
 
         </RelativeLayout>
 
