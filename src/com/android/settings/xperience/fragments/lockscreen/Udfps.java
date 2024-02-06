@@ -46,6 +46,7 @@ import androidx.preference.PreferenceScreen;
 import androidx.preference.SwitchPreference;
 
 import mx.xperience.framework.preference.SystemSettingSwitchPreference;
+import com.android.settings.xperience.fragments.lockscreen.UdfpsAnimation;
 import com.android.internal.logging.nano.MetricsProto;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
@@ -65,6 +66,11 @@ public class Udfps extends SettingsPreferenceFragment implements
         addPreferencesFromResource(R.xml.udfps_settings);
         final PreferenceScreen prefSet = getPreferenceScreen();
         Resources resources = getResources();
+    }
+
+    public static void reset(Context mContext) {
+        ContentResolver resolver = mContext.getContentResolver();
+        UdfpsAnimation.reset(mContext);
     }
 
     @Override
