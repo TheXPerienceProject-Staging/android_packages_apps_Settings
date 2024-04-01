@@ -121,4 +121,13 @@
     <string name="battery_maximum_capacity_summary">%1$d mAh (%2$d%%)</string>
     <string name="battery_maximum_capacity_not_available">@string/battery_cycle_count_not_available</string>
 
+    <!-- About phone, status item title. The battery manufacture date. [CHAR LIMIT=60]-->
+    <string name="battery_manufacture_date">Manufacture date</string>
+    <!-- About phone, status item title. Date of first use of the battery. [CHAR LIMIT=60]-->
+    <string name="battery_first_use_date">Date of first use</string>
+    <!-- About phone, status item title. Count of battery full charge/discharge cycles [CHAR LIMIT=60]-->
+    <string name="battery_cycle_count">Cycle count</string>
+    <!-- About phone, status item title. The status summary for cycle count that's not available. [CHAR LIMIT=40] -->
+    <string name="battery_cycle_count_not_available">Unavailable</string>
+
 </resources>
