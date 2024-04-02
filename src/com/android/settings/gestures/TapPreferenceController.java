@@ -30,7 +30,7 @@ import com.android.settingslib.core.AbstractPreferenceController;
 import com.android.settingslib.widget.MainSwitchPreference;
 import com.android.settingslib.widget.OnMainSwitchChangeListener;
 
-import co.aospa.framework.preference.SecureSettingSwitchPreference;
+import mx.xperience.framework.preference.SecureSettingSwitchPreference;
 
 public class TapPreferenceController extends AbstractPreferenceController
         implements PreferenceControllerMixin, OnMainSwitchChangeListener {
