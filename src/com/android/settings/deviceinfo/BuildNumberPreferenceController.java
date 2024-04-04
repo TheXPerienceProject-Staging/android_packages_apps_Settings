@@ -24,6 +24,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ResolveInfo;
 import android.os.Build;
+import android.os.SystemProperties;
 import android.os.UserHandle;
 import android.os.UserManager;
 import android.text.BidiFormatter;
@@ -55,6 +56,7 @@ public class BuildNumberPreferenceController extends BasePreferenceController im
 
     static final int TAPS_TO_BE_A_DEVELOPER = 7;
     static final int REQUEST_CONFIRM_PASSWORD_FOR_DEV_PREF = 100;
+    private static final String KEY_XPERIENCE_VERSION_PROP = "ro.build.id";
 
     private Activity mActivity;
     private InstrumentedPreferenceFragment mFragment;
@@ -80,7 +82,8 @@ public class BuildNumberPreferenceController extends BasePreferenceController im
 
     @Override
     public CharSequence getSummary() {
-        return BidiFormatter.getInstance().unicodeWrap(Build.DISPLAY);
+        return SystemProperties.get(KEY_XPERIENCE_VERSION_PROP,
+                mContext.getString(R.string.unknown));
     }
 
     @Override
