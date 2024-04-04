@@ -60,7 +60,7 @@ Copyright (C) The 2023 the risingOS Android Project
 
                 <TextView
                     android:id="@+id/romVersion"
-                    android:text="The XPerience Project"
+                    android:text="XPerience"
                     android:paddingTop="16dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
