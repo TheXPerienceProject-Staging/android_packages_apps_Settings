@@ -107,7 +107,7 @@ public class MyDeviceInfoFragment extends DashboardFragment
         use(DeviceNamePreferenceController.class).setHost(this /* parent */);
         mBuildNumberPreferenceController = use(BuildNumberPreferenceController.class);
         mBuildNumberPreferenceController.setHost(this /* parent */);
-        use(PhoneNumberPreferenceController.class).init(getSettingsLifecycle());
+        //use(PhoneNumberPreferenceController.class).init(getSettingsLifecycle());
     }
 
     @Override
