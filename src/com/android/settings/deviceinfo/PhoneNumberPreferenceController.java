@@ -143,7 +143,7 @@ public class PhoneNumberPreferenceController extends BasePreferenceController
             simStatusPreference.setSummary(getSummary());
             simStatusPreference.setIcon(R.drawable.ic_numbers);
             if (mTelephonyManager.getPhoneCount() < 2) {
-                simStatusPreference.setLayoutResource(R.layout.top_level_preference_bottom_card);
+                simStatusPreference.setLayoutResource(R.layout.top_level_preference_middle_card);
             } else {
                 if (simSlotNumber == 0) {
                     simStatusPreference.setLayoutResource(R.layout.top_level_preference_middle_card);

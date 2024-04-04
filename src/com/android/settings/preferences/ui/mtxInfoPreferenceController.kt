@@ -168,6 +168,8 @@ class mtxInfoPreferenceController(context: Context) : AbstractPreferenceControll
     companion object {
         private const val KEY_HW_INFO = "my_device_hw_header"
         private const val KEY_DEVICE_INFO = "my_device_info_header"
+        private const val KEY_BUILD_STATUS = "rom_build_status"
+
         private const val PROP_XPERIENCE_VERSION = "ro.xpe.modversion"
         private const val PROP_XPERIENCE_RELEASETYPE = "ro.xpe.releasetype"
         private const val PROP_XPERIENCE_MAINTAINER = "ro.xpe.maintainer"
