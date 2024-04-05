@@ -193,7 +193,7 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
         final LayoutPreference widgetPreference =
                         (LayoutPreference) getPreferenceScreen().findPreference("top_level_homepage_widgets");
         if (bannerPreference != null) {
-            final ImageView avatarView = bannerPreference.findViewById(R.id.account_avatar);
+            /*final ImageView avatarView = bannerPreference.findViewById(R.id.account_avatar);
             avatarView.setImageDrawable(getCircularUserIcon(getActivity()));
             avatarView.bringToFront();
             avatarView.setOnClickListener(new View.OnClickListener() {
@@ -201,7 +201,7 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
                 public void onClick(View v) {
                     launchComponent("com.android.settings", "com.android.settings.Settings$UserSettingsActivity");
                 }
-            });
+            });*/
             final String wppClass = getContext().getResources().getString(R.string.config_styles_and_wallpaper_picker_class);
             final String wppPkg = getContext().getResources().getString(R.string.config_wallpaper_picker_package);
             final String wppExtraIntent = getContext().getResources().getString(R.string.config_wallpaper_picker_launch_extra);
