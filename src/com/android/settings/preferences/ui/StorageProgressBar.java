@@ -103,7 +103,8 @@ public class StorageProgressBar extends ProgressBar {
             int green = interpolateColor(255, 0, storageLevel, 0, 100);
             int red = interpolateColor(0, 255, storageLevel, 0, 100);
             int blue = 0;
-            int color = (alpha << 24) | (red << 16) | (green << 8) | blue;
+            //int color = (alpha << 24) | (red << 16) | (green << 8) | blue;
+            int color = ContextCompat.getColor(getContext(), R.color.test_shit);
             int bgColor = ContextCompat.getColor(getContext(), R.color.card_surface_color);
             Drawable bg = layerDrawable.getDrawable(0);
             Drawable progress = layerDrawable.getDrawable(1);
