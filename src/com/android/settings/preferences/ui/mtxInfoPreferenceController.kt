@@ -77,7 +77,7 @@ class mtxInfoPreferenceController(context: Context) : AbstractPreferenceControll
     }
 
     private fun getXPerienceReleaseType(): String {
-        val releaseType = getPropertyOrDefault(PROP_XPERIENCE_RELEASETYPE)
+        val releaseType = getPropertyOrDefault(PROP_XPERIENCE_BUILD_TYPE)
         return releaseType.substring(0, 1).uppercase() +
                releaseType.substring(1).lowercase()
     }
