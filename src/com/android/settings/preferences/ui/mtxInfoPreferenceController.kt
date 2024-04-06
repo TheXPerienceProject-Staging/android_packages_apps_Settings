@@ -97,7 +97,7 @@ class mtxInfoPreferenceController(context: Context) : AbstractPreferenceControll
     override fun displayPreference(screen: PreferenceScreen) {
         super.displayPreference(screen)
 
-        val releaseType = getPropertyOrDefault(PROP_XPERIENCE_RELEASETYPE).lowercase()
+        val releaseType = getPropertyOrDefault(PROP_XPERIENCE_BUILD_TYPE).lowercase()
         val xperienceMaintainer = getXPerienceMaintainer(releaseType)
         val isOfficial = releaseType == "official"
 
