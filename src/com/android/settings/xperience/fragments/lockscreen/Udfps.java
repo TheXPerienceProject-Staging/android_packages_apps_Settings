@@ -74,11 +74,6 @@ public class Udfps extends SettingsPreferenceFragment implements
     }
 
     @Override
-    public boolean onPreferenceTreeClick(Preference preference) {
-        return super.onPreferenceTreeClick(preference);
-    }
-
-    @Override
     public int getMetricsCategory() {
         return MetricsProto.MetricsEvent.RAINBOW_UNICORN;
     }
