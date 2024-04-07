@@ -20,6 +20,13 @@
             android:summary="@string/udfps_settings_summary"
             android:fragment="com.android.settings.xperience.fragments.lockscreen.Udfps" />
 
+        <!--<Preference
+            android:key="udfps_icon_picker"
+            android:icon="@drawable/ic_fp_selector"
+            android:title="@string/udfps_icon_picker_title"
+            android:summary="@string/udfps_icon_picker_summary"
+            android:fragment="com.android.settings.xperience.fragments.lockscreen.UdfpsIconPicker" />-->
+
     </PreferenceCategory>
 
 </PreferenceScreen>

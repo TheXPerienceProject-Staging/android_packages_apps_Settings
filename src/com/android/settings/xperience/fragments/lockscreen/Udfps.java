@@ -47,6 +47,7 @@ import androidx.preference.SwitchPreference;
 
 import mx.xperience.framework.preference.SystemSettingSwitchPreference;
 import com.android.settings.xperience.fragments.lockscreen.UdfpsAnimation;
+import com.android.settings.xperience.fragments.lockscreen.UdfpsIconPicker;
 import com.android.internal.logging.nano.MetricsProto;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
@@ -71,6 +72,7 @@ public class Udfps extends SettingsPreferenceFragment implements
     public static void reset(Context mContext) {
         ContentResolver resolver = mContext.getContentResolver();
         UdfpsAnimation.reset(mContext);
+        UdfpsIconPicker.reset(mContext);
     }
 
     @Override

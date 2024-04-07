@@ -149,4 +149,6 @@
     <string name="enable">Enable</string>
     <string name="udfps_animation_title">UDFPS animation effect</string>
     <string name="udfps_animation_summary">Choose animation effect</string>
+    <string name="udfps_icon_picker_title">UDFPS icon picker</string>
+    <string name="udfps_icon_picker_summary">Choose your favorite fingerprint icon</string>
 </resources>

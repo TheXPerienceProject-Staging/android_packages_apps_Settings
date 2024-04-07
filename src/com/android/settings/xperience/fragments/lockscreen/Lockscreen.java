@@ -50,6 +50,7 @@ import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settingslib.search.SearchIndexable;
 import com.android.settings.fuelgauge.batteryusage.PowerUsageSummary;
+import com.android.settings.xperience.fragments.lockscreen.UdfpsIconPicker;
 
 import java.util.ArrayList;
 import java.util.List;
