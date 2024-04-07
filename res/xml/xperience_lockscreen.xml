@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2011-2024 The XPerience Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
+    android:title="@string/xperience_lockscreen_title">
+
+    <!-- Udfps options -->
+    <PreferenceCategory
+        android:key="udfps_category"
+        android:title="@string/udfps_category">
+
+        <Preference
+            android:key="udfps_settings"
+            android:title="@string/udfps_settings_title"
+            android:summary="@string/udfps_settings_summary"
+            android:fragment="com.android.settings.xperience.fragments.lockscreen.Udfps" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

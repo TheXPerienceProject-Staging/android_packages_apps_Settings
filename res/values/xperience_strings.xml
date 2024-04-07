@@ -138,4 +138,10 @@
     <!-- Global Actions -->
     <string name="global_actions_advanced_reboot_title">Advanced restart</string>
     <string name="global_actions_advanced_reboot_summary">Show options for recovery and bootloader in power menu</string>
+
+    <!-- UDFPS Recog Animation -->
+    <string name="xperience_lockscreen_title">Lock screen</string>
+    <string name="udfps_category" translatable="false">UDFPS</string>
+    <string name="udfps_settings_title">UDFPS settings</string>
+    <string name="udfps_settings_summary">Settings for customizing the UDFPS</string>
 </resources>
