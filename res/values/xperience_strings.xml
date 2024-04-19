@@ -29,6 +29,9 @@
     <string name="xperience_build_code">XPerience Codename</string>
     <!-- About phone screen, status item label  [CHAR LIMIT=40] -->
     <string name="build_channel">Channel</string>
+    <!-- About phone CLO revision [CHAR LIMIT=100] -->
+    <string name="clo_revision">Clo revision</string>
+    <string name="clo_sys_vend">System | vendor</string>
     <!-- About to show Device name -->
     <string name="about_device_name">Device</string>
     <string name="homepage_widget_battery_percent">percent</string>
