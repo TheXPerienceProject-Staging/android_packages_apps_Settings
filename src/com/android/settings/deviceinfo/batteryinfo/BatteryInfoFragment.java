@@ -17,13 +17,11 @@
 package com.android.settings.deviceinfo.batteryinfo;
 
 import android.app.settings.SettingsEnums;
-import android.os.Bundle;
 
 import com.android.settings.R;
 import com.android.settings.dashboard.DashboardFragment;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settingslib.search.SearchIndexable;
-import com.android.settingslib.widget.FooterPreference;
 
 /**
  * A fragment that shows battery hardware information.
@@ -32,9 +30,6 @@ import com.android.settingslib.widget.FooterPreference;
 public class BatteryInfoFragment extends DashboardFragment {
 
     public static final String TAG = "BatteryInfo";
-    private static final String KEY_BATTERY_INFO_FOOTER = "battery_info_footer";
-
-    private FooterPreference mFooterPreference;
 
     @Override
     public int getMetricsCategory() {
@@ -44,19 +39,6 @@ public class BatteryInfoFragment extends DashboardFragment {
     @Override
     protected int getPreferenceScreenResId() {
         return R.xml.battery_info;
-    }
-
-    @Override
-    public void onCreate(Bundle icicle) {
-        super.onCreate(icicle);
-        mFooterPreference = findPreference(KEY_BATTERY_INFO_FOOTER);
-    }
-
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mFooterPreference.setVisible(
-                getContext().getResources().getBoolean(R.bool.config_showBatteryCycleCount));
     }
 
     @Override
