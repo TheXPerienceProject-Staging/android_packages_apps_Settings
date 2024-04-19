@@ -43,7 +43,7 @@ public class CLOVersionPreferenceController extends BasePreferenceController {
         String vendorVer = SystemProperties.get(PROPERTY_CLO_VENDOR);
 
         if (!systemVer.isEmpty() && !vendorVer.isEmpty())
-            return mContext.getString(R.string.clo_sys_vend)+"\n"+systemVer +"\n" + vendorVer;
+            return /*mContext.getString(R.string.clo_sys_vend)+"\n"+*/systemVer +"\n" + vendorVer;
         else
             return mContext.getString(R.string.unknown);
     }
