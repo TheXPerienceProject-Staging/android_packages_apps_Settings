@@ -158,7 +158,7 @@
 
     <!-- Battery Info: Technology -->
     <string name="battery_technology">Technology</string>
-    <string name="battery_technology_not_available">@string/battery_cycle_count_not_available</string>
+    <string name="battery_technology_not_available" translatable="false">@string/battery_cycle_count_not_available</string>
 
     <!-- Battery Info: Health -->
     <string name="battery_health">Health</string>
@@ -172,7 +172,7 @@
 
     <!-- Battery Info: Temperature -->
     <string name="battery_temperature">Temperature</string>
-    <string name="battery_temperature_not_available">@string/battery_cycle_count_not_available</string>
+    <string name="battery_temperature_not_available" translatable="false">@string/battery_cycle_count_not_available</string>
 
     <!-- Battery Info: Voltage -->
     <string name="battery_voltage">Voltage</string>
@@ -184,12 +184,12 @@
     <!-- Battery Info: Design Capacity -->
     <string name="battery_design_capacity">Design capacity</string>
     <string name="battery_design_capacity_summary">%1$d mAh</string>
-    <string name="battery_design_capacity_not_available">@string/battery_cycle_count_not_available</string>
+    <string name="battery_design_capacity_not_available" translatable="false">@string/battery_cycle_count_not_available</string>
 
     <!-- Battery Info: Maximum Capacity -->
     <string name="battery_maximum_capacity">Maximum capacity</string>
     <string name="battery_maximum_capacity_summary">%1$d mAh (%2$d%%)</string>
-    <string name="battery_maximum_capacity_not_available">@string/battery_cycle_count_not_available</string>
+    <string name="battery_maximum_capacity_not_available" translatable="false">@string/battery_cycle_count_not_available</string>
 
     <!-- Smart 5G -->
     <string name="smart_5g_title">Smart 5G</string>
