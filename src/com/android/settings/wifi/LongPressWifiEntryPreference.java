@@ -16,7 +16,6 @@
 package com.android.settings.wifi;
 
 import android.content.Context;
-import android.os.UserManager;
 
 import androidx.annotation.VisibleForTesting;
 import androidx.fragment.app.Fragment;
@@ -35,7 +34,6 @@ public class LongPressWifiEntryPreference extends WifiEntryPreference {
     public LongPressWifiEntryPreference(Context context, WifiEntry wifiEntry, Fragment fragment) {
         super(context, wifiEntry);
         mFragment = fragment;
-        checkRestrictionAndSetDisabled();
     }
 
     @Override
