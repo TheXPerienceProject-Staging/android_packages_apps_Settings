@@ -72,14 +72,6 @@
     <!-- Label for device's hardware ram size [CHAR LIMIT=40] -->
     <string name="total_ram">Total RAM</string>
 
-    <!-- Battery health -->
-    <string name="battery_health_title">Battery health</string>
-    <string name="battery_health_summary">Monitor the battery health of your device</string>
-    <string name="current_battery_capacity">Current battery capacity</string>
-    <string name="current_battery_capacity_summary">The current battery capacity measured by the kernel</string>
-    <string name="designed_battery_capacity">Designed battery capacity</string>
-    <string name="designed_battery_capacity_summary">The battery capacity designed by the manufacturer</string>
-
     <!-- Ambient wake toggles -->
     <string name="doze_gesture_ambient_title">Show Ambient</string>
     <string name="doze_gesture_ambient_summary">Show Ambient Display instead of fully waking the screen up</string>
@@ -242,4 +234,5 @@
     <string name="charging_control_target_time_summary">Battery will be fully charged by %s</string>
     <string name="charging_control_limit_title">Limit</string>
     <string name="reset">Reset</string>
+
 </resources>
