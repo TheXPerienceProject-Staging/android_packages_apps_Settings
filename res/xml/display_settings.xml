@@ -172,12 +172,6 @@
             settings:keywords="@string/keywords_refresh_rate"
             settings:controller="com.android.settings.display.RefreshRatePreferenceController"/>
 
-        <Preference
-            android:key="network_traffic_settings"
-            android:title="@string/network_traffic_settings_title"
-            android:summary="@string/network_traffic_settings_summary"
-            android:fragment="com.android.settings.xperience.fragments.lockscreen.NetworkTrafficSettings" />
-
         <com.android.settings.display.DcDimmingPreference
             android:key="dc_dimming"
             android:title="@string/dc_dimming_title"
@@ -246,6 +240,4 @@
             android:title="@string/display_vr_pref_title"
             android:fragment="com.android.settings.display.VrDisplayPreferencePicker"/>
     </PreferenceCategory>
-
-
 </PreferenceScreen>
