@@ -25,6 +25,13 @@
         android:title="@string/color_mode_balance_category"
         android:order="100">
 
+        <mx.xperience.framework.preference.SecureSettingSwitchPreference
+            android:key="x_reality_engine_mode_enabled"
+            android:title="@string/x_reality_engine_mode_title"
+            android:summary="@string/x_reality_engine_mode_summary"
+            android:defaultValue="false"
+            settings:position="none" />
+
         <SeekBarPreference
             android:key="color_balance_red"
             android:title="@string/color_mode_balance_red"
