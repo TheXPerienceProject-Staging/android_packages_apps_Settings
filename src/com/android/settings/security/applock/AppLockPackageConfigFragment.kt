@@ -72,7 +72,7 @@ class AppLockPackageConfigFragment : DashboardFragment() {
         AppLockHideAppPC(context, packageInfo.packageName, lifecycleScope)
     )
 
-    override fun getMetricsCategory(): Int = MetricsProto.MetricsEvent.DERP
+    override fun getMetricsCategory(): Int = MetricsProto.MetricsEvent.RAINBOW_UNICORN
 
     override protected fun getPreferenceScreenResId() = R.xml.app_lock_package_config_settings
 

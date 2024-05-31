@@ -18,8 +18,7 @@
 package com.android.settings.security.applock;
 
 import android.content.Context
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.Switch
 
 import androidx.preference.Preference
 import androidx.preference.PreferenceScreen
@@ -27,12 +26,13 @@ import androidx.preference.PreferenceScreen
 import com.android.settings.R
 import com.android.settings.core.TogglePreferenceController
 import com.android.settingslib.widget.MainSwitchPreference
+import com.android.settingslib.widget.OnMainSwitchChangeListener
 
 abstract class AppLockTogglePreferenceController(
     context: Context,
     key: String,
 ) : TogglePreferenceController(context, key),
-    OnCheckedChangeListener {
+    OnMainSwitchChangeListener {
 
     override fun displayPreference(screen: PreferenceScreen) {
         super.displayPreference(screen)
@@ -42,7 +42,7 @@ abstract class AppLockTogglePreferenceController(
         }
     }
 
-    override fun onCheckedChanged(buttonView: CompoundButton, isChecked: Boolean) {
+    override fun onSwitchChanged(switchView: Switch, isChecked: Boolean) {
         setChecked(isChecked)
     }
 
