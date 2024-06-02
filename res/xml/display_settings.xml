@@ -245,6 +245,11 @@
         android:key="theme_customization_category"
         android:title="@string/theme_customization_category">
 
+		<PreferenceScreen
+		    android:key="statusbar_xpe"
+			android:title="@string/statusbar_custom"
+			android:fragment="com.android.settings.xperience.StatusBarSettings" />
+
         <mx.xperience.framework.preference.SystemSettingSwitchPreference
             android:key="statusbar_colored_icons"
             android:title="@string/statusbar_colored_icons_title"
