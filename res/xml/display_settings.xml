@@ -250,12 +250,6 @@
 			android:title="@string/statusbar_custom"
 			android:fragment="com.android.settings.xperience.StatusBarSettings" />
 
-        <mx.xperience.framework.preference.SystemSettingSwitchPreference
-            android:key="statusbar_colored_icons"
-            android:title="@string/statusbar_colored_icons_title"
-            android:summary="@string/statusbar_colored_icons_summary"
-            android:defaultValue="true" />
-
         <Preference
             android:key="android.theme.customization.fonts"
             android:title="@string/theme_customization_font_title"
