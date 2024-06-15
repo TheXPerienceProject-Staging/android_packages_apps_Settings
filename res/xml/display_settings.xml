@@ -275,6 +275,12 @@
             android:fragment="com.android.settings.xperience.DataStyles" />
 
         <Preference
+            android:key="android.theme.customization.volte_icon"
+            android:title="@string/theme_customization_volte_icon_title"
+            android:summary="@string/theme_customization_volte_icon_summary"
+            android:fragment="com.android.settings.xperience.VolteStyles" />
+
+        <Preference
             android:key="android.theme.customization.signal_icon"
             android:title="@string/theme_customization_signal_icon_title"
             android:summary="@string/theme_customization_icon_pack_summary"
