@@ -76,6 +76,25 @@ public class StatusBarBatterySettings extends SettingsPreferenceFragment
     public static final int BATTERY_STYLE_LANDSCAPE = 6;
     public static final int BATTERY_STYLE_iOS15 = 7;
     public static final int BATTERY_STYLE_iOS16 = 8;
+    public static final int BATTERY_STYLE_LANDSCAPE_BUDDY = 9;
+    public static final int BATTERY_STYLE_LANDSCAPE_LINE = 10;
+    public static final int BATTERY_STYLE_LANDSCAPE_MUSKU = 11;
+    public static final int BATTERY_STYLE_LANDSCAPE_PILL = 12;
+    public static final int BATTERY_STYLE_LANDSCAPE_SIGNAL = 13;
+    public static final int BATTERY_STYLE_RLANDSCAPE_STYLE_A = 14;
+    public static final int BATTERY_STYLE_LANDSCAPE_STYLE_A = 15;
+    public static final int BATTERY_STYLE_RLANDSCAPE_STYLE_B = 16;
+    public static final int BATTERY_STYLE_LANDSCAPE_STYLE_B = 17;
+    public static final int BATTERY_STYLE_LANDSCAPE_ORIGAMI = 18;
+    public static final int BATTERY_STYLE_LANDSCAPE_MIUI_PILL = 19;
+    public static final int BATTERY_STYLE_LANDSCAPE_SIMPLY = 20;
+    public static final int BATTERY_STYLE_LANDSCAPE_NENINE = 21;
+    public static final int BATTERY_STYLE_LANDSCAPE_COLOROS = 22;
+    public static final int BATTERY_STYLE_LANDSCAPE_LOVE = 23;
+    public static final int BATTERY_STYLE_LANDSCAPE_STRIP = 24;
+    public static final int BATTERY_STYLE_LANDSCAPE_IOS_OUTLINE = 25;
+    public static final int BATTERY_STYLE_LANDSCAPE_RULER = 26;
+    public static final int BATTERY_STYLE_LANDSCAPE_WINDOWS = 27;
 
     private SystemSettingListPreference mBatteryStyle;
     private SystemSettingSwitchPreference mBatteryPercent;
@@ -91,6 +110,25 @@ public class StatusBarBatterySettings extends SettingsPreferenceFragment
             BATTERY_STYLE_LANDSCAPE,
             BATTERY_STYLE_iOS15,
             BATTERY_STYLE_iOS16,
+            BATTERY_STYLE_LANDSCAPE_BUDDY,
+            BATTERY_STYLE_LANDSCAPE_LINE,
+            BATTERY_STYLE_LANDSCAPE_MUSKU,
+            BATTERY_STYLE_LANDSCAPE_PILL,
+            BATTERY_STYLE_LANDSCAPE_SIGNAL,
+            BATTERY_STYLE_RLANDSCAPE_STYLE_A,
+            BATTERY_STYLE_LANDSCAPE_STYLE_A,
+            BATTERY_STYLE_RLANDSCAPE_STYLE_B,
+            BATTERY_STYLE_LANDSCAPE_STYLE_B,
+            BATTERY_STYLE_LANDSCAPE_ORIGAMI,
+            BATTERY_STYLE_LANDSCAPE_MIUI_PILL,
+            BATTERY_STYLE_LANDSCAPE_SIMPLY,
+            BATTERY_STYLE_LANDSCAPE_NENINE,
+            BATTERY_STYLE_LANDSCAPE_COLOROS,
+            BATTERY_STYLE_LANDSCAPE_LOVE,
+            BATTERY_STYLE_LANDSCAPE_STRIP,
+            BATTERY_STYLE_LANDSCAPE_IOS_OUTLINE,
+            BATTERY_STYLE_LANDSCAPE_RULER,
+            BATTERY_STYLE_LANDSCAPE_WINDOWS,
             BATTERY_STYLE_FULL_CIRCLE,
             BATTERY_STYLE_CIRCLE,
             BATTERY_STYLE_DOTTED_CIRCLE,

@@ -77,8 +77,8 @@
 
     <Preference
 	android:key="statusbar_battery"
-        android:title="@string/battery_percent_title"
-        android:summary="@string/battery_percent_summary"
+        android:title="@string/status_bar_battery_category_title"
+        android:summary="@string/status_bar_battery_style_summary"
         android:fragment="com.android.settings.fuelgauge.StatusBarBatterySettings"/>
 
     <com.android.settingslib.widget.FooterPreference
