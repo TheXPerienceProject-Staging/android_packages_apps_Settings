@@ -61,6 +61,8 @@
         <item>@string/battery_style_port</item>
         <item>@string/battery_style_icon_rlandscape</item>
         <item>@string/battery_style_icon_landscape</item>
+        <item>@string/battery_style_icon_iOS15</item>
+        <item>@string/battery_style_icon_iOS16</item>
         <item>@string/battery_style_circle</item>
         <item>@string/battery_style_dotted_circle</item>
         <item>@string/battery_style_pa_circle</item>
@@ -71,6 +73,8 @@
         <item>0</item>
         <item>5</item>
         <item>6</item>
+        <item>7</item>
+        <item>8</item>
         <item>1</item>
         <item>2</item>
         <item>3</item>

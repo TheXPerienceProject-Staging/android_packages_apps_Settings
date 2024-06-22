@@ -74,6 +74,8 @@ public class StatusBarBatterySettings extends SettingsPreferenceFragment
     public static final int BATTERY_STYLE_TEXT = 4;
     public static final int BATTERY_STYLE_RLANDSCAPE = 5;
     public static final int BATTERY_STYLE_LANDSCAPE = 6;
+    public static final int BATTERY_STYLE_iOS15 = 7;
+    public static final int BATTERY_STYLE_iOS16 = 8;
 
     private SystemSettingListPreference mBatteryStyle;
     private SystemSettingSwitchPreference mBatteryPercent;
@@ -87,6 +89,8 @@ public class StatusBarBatterySettings extends SettingsPreferenceFragment
             BATTERY_STYLE_PORTRAIT,
             BATTERY_STYLE_RLANDSCAPE,
             BATTERY_STYLE_LANDSCAPE,
+            BATTERY_STYLE_iOS15,
+            BATTERY_STYLE_iOS16,
             BATTERY_STYLE_FULL_CIRCLE,
             BATTERY_STYLE_CIRCLE,
             BATTERY_STYLE_DOTTED_CIRCLE,

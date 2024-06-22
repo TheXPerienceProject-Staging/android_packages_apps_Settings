@@ -330,6 +330,8 @@
     <string name="battery_style_port">Portrait</string>
     <string name="battery_style_icon_rlandscape">Icon landscape (Right)</string>
     <string name="battery_style_icon_landscape">Icon landscape (Left)</string>
+    <string name="battery_style_icon_iOS15" translatable="false">iOS 15</string>
+    <string name="battery_style_icon_iOS16" translatable="false">iOS 16</string>
     <string name="battery_style_circle">Circle</string>
     <string name="battery_style_dotted_circle">Circle dotted</string>
     <string name="battery_style_pa_circle">PA Circle</string>
