@@ -18,18 +18,24 @@ package com.android.settings.fuelgauge;
 
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.UserHandle;
 import android.provider.SearchIndexableResource;
 import android.provider.Settings;
+import android.text.format.DateFormat;
+import android.text.TextUtils;
+import android.util.Log;
+import android.view.View;
 
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
-import androidx.preference.PreferenceGroup;
-import androidx.preference.PreferenceScreen;
-import androidx.preference.PreferenceCategory;
 import androidx.preference.Preference.OnPreferenceChangeListener;
-import androidx.preference.PreferenceFragment;
+import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
 
 import com.android.internal.logging.nano.MetricsProto;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
@@ -42,8 +48,6 @@ import com.android.settingslib.search.Indexable;
 import com.android.settingslib.search.SearchIndexable;
 
 import mx.xperience.framework.preference.SystemSettingSwitchPreference;
-import mx.xperience.framework.preference.SystemSettingSeekBarPreference;
-import mx.xperience.framework.preference.SecureSettingSwitchPreference;
 import mx.xperience.framework.preference.SystemSettingListPreference;
 
 import java.util.List;
@@ -56,28 +60,43 @@ import java.util.Collections;
 public class StatusBarBatterySettings extends SettingsPreferenceFragment
         implements Preference.OnPreferenceChangeListener, Indexable {
 
-    private static final String KEY_STATUS_BAR_SHOW_BATTERY_PERCENT = "status_bar_show_battery_percent";
-    private static final String KEY_STATUS_BAR_BATTERY_STYLE = "status_bar_battery_style";
-    private static final String KEY_STATUS_BAR_BATTERY_TEXT_CHARGING = "status_bar_battery_text_charging";
+    public static final String TAG = "StatusBarBatterySettings";
 
+    private static final String BATTERY_STYLE = "status_bar_battery_style";
     private static final String SHOW_BATTERY_PERCENT = "status_bar_show_battery_percent";
     private static final String SHOW_BATTERY_PERCENT_CHARGING = "status_bar_show_battery_percent_charging";
     private static final String SHOW_BATTERY_PERCENT_INSIDE = "status_bar_show_battery_percent_inside";
+
+    public static final int BATTERY_STYLE_PORTRAIT = 0;
+    public static final int BATTERY_STYLE_CIRCLE = 1;
+    public static final int BATTERY_STYLE_DOTTED_CIRCLE = 2;
+    public static final int BATTERY_STYLE_FULL_CIRCLE = 3;
+    public static final int BATTERY_STYLE_TEXT = 4;
+    public static final int BATTERY_STYLE_RLANDSCAPE = 5;
+    public static final int BATTERY_STYLE_LANDSCAPE = 6;
 
     private SystemSettingListPreference mBatteryStyle;
     private SystemSettingSwitchPreference mBatteryPercent;
     private SystemSettingSwitchPreference mBatteryPercentCharging;
     private SystemSettingSwitchPreference mBatteryPercentInside;
 
-    private static final int BATTERY_STYLE_PORTRAIT = 0;
-    private static final int BATTERY_STYLE_TEXT = 4;
-    private static final int BATTERY_STYLE_HIDDEN = 5;
-    private static final int BATTERY_PERCENT_HIDDEN = 0;
-    private static final int BATTERY_PERCENT_SHOW = 2;
+    private int mValidStyle = BATTERY_STYLE_PORTRAIT;
+
+    // Define allowed battery style values
+    private static final int[] allowedStyles = {
+            BATTERY_STYLE_PORTRAIT,
+            BATTERY_STYLE_RLANDSCAPE,
+            BATTERY_STYLE_LANDSCAPE,
+            BATTERY_STYLE_FULL_CIRCLE,
+            BATTERY_STYLE_CIRCLE,
+            BATTERY_STYLE_DOTTED_CIRCLE,
+            BATTERY_STYLE_TEXT
+    };
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void onCreate(Bundle icicle) {
+        super.onCreate(icicle);
+
         addPreferencesFromResource(R.xml.statusbar_battery_settings);
 
         PreferenceScreen prefSet = getPreferenceScreen();
@@ -96,41 +115,74 @@ public class StatusBarBatterySettings extends SettingsPreferenceFragment
         mBatteryPercentInside.setChecked(percentInside);
         mBatteryPercentInside.setOnPreferenceChangeListener(this);
 
-        int batterystyle = Settings.System.getIntForUser(getContentResolver(),
-                Settings.System.STATUS_BAR_BATTERY_STYLE, BATTERY_STYLE_PORTRAIT, UserHandle.USER_CURRENT);
-        mBatteryStyle = (SystemSettingListPreference) findPreference("status_bar_battery_style");
-        mBatteryStyle.setValue(String.valueOf(batterystyle));
+        /* algo iba a ponr aqui pero lo olvide */
+        mBatteryStyle = findPreference(BATTERY_STYLE);
+
+        // Get the current battery style value from settings
+        int value = Settings.System.getIntForUser(resolver,
+            BATTERY_STYLE, BATTERY_STYLE_PORTRAIT, UserHandle.USER_CURRENT);
+
+        // Validate the current value against allowed styles
+        boolean validValue = false;
+        for (int allowedStyle : allowedStyles) {
+            if (value == allowedStyle) {
+                validValue = true;
+                break;
+            }
+        }
+
+        // If the value is invalid, set it to the default (BATTERY_STYLE_PORTRAIT)
+        if (!validValue) {
+            value = BATTERY_STYLE_PORTRAIT;
+            Settings.System.putIntForUser(resolver, BATTERY_STYLE, value, UserHandle.USER_CURRENT);
+        }
+
+        // Set the battery style preference value and summary
+        mBatteryStyle.setValue(Integer.toString(value));
         mBatteryStyle.setSummary(mBatteryStyle.getEntry());
         mBatteryStyle.setOnPreferenceChangeListener(this);
 
         mBatteryPercentCharging = findPreference(SHOW_BATTERY_PERCENT_CHARGING);
-        updatePercentChargingEnablement(batterystyle, percentEnabled, percentInside);
+        updatePercentChargingEnablement(value, percentEnabled, percentInside);
     }
 
     @Override
-    public boolean onPreferenceChange(Preference preference, Object newValue) {
+    public boolean onPreferenceChange(Preference preference, Object objValue) {
         final ContentResolver resolver = getActivity().getContentResolver();
         if (preference == mBatteryStyle) {
-            int value = Integer.parseInt((String) newValue);
-            int index = mBatteryStyle.findIndexOfValue((String) newValue);
-            mBatteryStyle.setSummary(mBatteryStyle.getEntries()[index]);
-            /*Settings.System.putIntForUser(resolver,
-                    KEY_STATUS_BAR_BATTERY_STYLE, value, UserHandle.USER_CURRENT);*/
-            Settings.System.putIntForUser(resolver,
-                Settings.System.STATUS_BAR_BATTERY_STYLE, value,
-                UserHandle.USER_CURRENT);
-            //updatePercentEnablement(value != 5);
-            updatePercentChargingEnablement(value, null, null);
-            return true;
+            // Ensure the selected value is within the allowed range
+            int value = Integer.valueOf((String) objValue);
+            boolean validValue = false;
+            for (int allowedStyle : allowedStyles) {
+                if (value == allowedStyle) {
+                    validValue = true;
+                    mValidStyle = value; // Set mValidStyle here after validation
+                    break;
+                }
+            }
+            if (validValue) {
+                int index = mBatteryStyle.findIndexOfValue((String) objValue);
+                mBatteryStyle.setSummary(mBatteryStyle.getEntries()[index]);
+                //Log.d(TAG, "Setting valid style: " + mValidStyle); // Add this line for debugging
+                Settings.System.putIntForUser(resolver,
+                        BATTERY_STYLE, mValidStyle, UserHandle.USER_CURRENT);
+                updatePercentEnablement(value != BATTERY_STYLE_TEXT);
+                updatePercentChargingEnablement(value, null, null);
+            } else {
+                // Handle invalid selection here (e.g., toast message)
+                // Reset the preference value to the previously valid option
+                mBatteryStyle.setValue(String.valueOf(mValidStyle));
+            }
+            return validValue;
         } else if (preference == mBatteryPercent) {
-            boolean enabled = (boolean) newValue;
+            boolean enabled = (boolean) objValue;
             Settings.System.putInt(resolver,
                     SHOW_BATTERY_PERCENT, enabled ? 1 : 0);
             mBatteryPercentInside.setEnabled(enabled);
             updatePercentChargingEnablement(null, enabled, null);
             return true;
         } else if (preference == mBatteryPercentInside) {
-            boolean enabled = (boolean) newValue;
+            boolean enabled = (boolean) objValue;
             Settings.System.putInt(resolver,
                     SHOW_BATTERY_PERCENT_INSIDE, enabled ? 1 : 0);
             // we already know style isn't text and percent is enabled
@@ -145,11 +197,28 @@ public class StatusBarBatterySettings extends SettingsPreferenceFragment
         mBatteryPercentInside.setEnabled(enabled && mBatteryPercent.isChecked());
     }
 
-    private void updatePercentChargingEnablement(Integer style, Boolean percent, Boolean inside) {
-        if (style == null) style = Integer.valueOf(mBatteryStyle.getValue());
-        if (percent == null) percent = mBatteryPercent.isChecked();
-        if (inside == null) inside = mBatteryPercentInside.isChecked();
-        mBatteryPercentCharging.setEnabled(style != 5 && (!percent || inside));
+    private void updatePercentChargingEnablement(Integer value, Boolean isPercentEnabled, Boolean isPercentInsideEnabled) {
+        // Handle cases where value might be invalid
+        if (value == null || !isValidStyle(value)) {
+            value = BATTERY_STYLE_PORTRAIT; // Or use a default valid style
+            Log.w(TAG, "Invalid battery style passed to updatePercentChargingEnablement: " + value);
+        }
+
+        // Update "show battery percent while charging" preference logic
+        boolean enableChargingPercent = (isPercentEnabled != null ? isPercentEnabled : mBatteryPercent.isChecked())
+                && (isPercentInsideEnabled != null ? isPercentInsideEnabled : mBatteryPercentInside.isChecked())
+                && value != BATTERY_STYLE_TEXT;
+
+        mBatteryPercentCharging.setEnabled(enableChargingPercent);
+    }
+
+    private boolean isValidStyle(int value) {
+        for (int allowedStyle : allowedStyles) {
+            if (value == allowedStyle) {
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override
