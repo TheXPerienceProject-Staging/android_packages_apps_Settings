@@ -25,12 +25,26 @@
         android:title="@string/color_mode_balance_category"
         android:order="100">
 
-        <mx.xperience.framework.preference.SecureSettingSwitchPreference
-            android:key="x_reality_engine_mode_enabled"
-            android:title="@string/x_reality_engine_mode_title"
-            android:summary="@string/x_reality_engine_mode_summary"
-            android:defaultValue="false"
+    <PreferenceCategory
+        android:key="display_engine_category"
+        android:title="@string/display_engine_category"
+        android:order="100">
+
+        <mx.xperience.framework.preference.SecureSettingListPreference
+            android:key="display_engine_mode"
+            android:title="@string/display_engine_mode_title"
+            android:entries="@array/display_engine_mode_entries"
+            android:entryValues="@array/display_engine_mode_values"
+            android:summary="%s"
+            android:defaultValue="0"
             settings:position="none" />
+
+        <com.android.settingslib.widget.FooterPreference
+            android:key="display_engine_mode_footer"
+            android:title="@string/display_engine_mode_footer_text"
+            android:selectable="false"
+            settings:searchable="false" />
+    </PreferenceCategory>
 
         <SeekBarPreference
             android:key="color_balance_red"

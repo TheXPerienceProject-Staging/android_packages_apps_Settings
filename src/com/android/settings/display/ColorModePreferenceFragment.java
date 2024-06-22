@@ -59,12 +59,7 @@ import mx.xperience.framework.preference.SecureSettingSwitchPreference;
 
 @SuppressWarnings("WeakerAccess")
 @SearchIndexable
-public class ColorModePreferenceFragment extends RadioButtonPickerFragment implements Preference.OnPreferenceChangeListener {
-
-    private static final String KEY_X_REALITY_ENGINE = "x_reality_engine_mode_enabled";
-    private static final String KEY_COLOR_BALANCE_RED = "color_balance_red";
-    private static final String KEY_COLOR_BALANCE_GREEN = "color_balance_green";
-    private static final String KEY_COLOR_BALANCE_BLUE = "color_balance_blue";
+public class ColorModePreferenceFragment extends RadioButtonPickerFragment {
 
     private static final String KEY_COLOR_MODE_PREFIX = "color_mode_";
 
@@ -89,11 +84,6 @@ public class ColorModePreferenceFragment extends RadioButtonPickerFragment imple
     private ImageView[] mDotIndicators;
     private View[] mViewPagerImages;
     
-    private SecureSettingSwitchPreference mXRealityEnginePreference;
-    private SeekBarPreference mColorBalanceRed;
-    private SeekBarPreference mColorBalanceGreen;
-    private SeekBarPreference mColorBalanceBlue;
-
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -129,37 +119,8 @@ public class ColorModePreferenceFragment extends RadioButtonPickerFragment imple
             mViewPager.setCurrentItem(selectedPosition);
             updateIndicator(selectedPosition);
         }
-        mXRealityEnginePreference = findPreference(KEY_X_REALITY_ENGINE);
-        mColorBalanceRed = findPreference(KEY_COLOR_BALANCE_RED);
-        mColorBalanceGreen = findPreference(KEY_COLOR_BALANCE_GREEN);
-        mColorBalanceBlue = findPreference(KEY_COLOR_BALANCE_BLUE);
-        if (mXRealityEnginePreference != null) {
-            mXRealityEnginePreference.setOnPreferenceChangeListener(this);
-            updateSeekBarsState(mXRealityEnginePreference.isChecked());
-        }
     }
     
-    @Override
-    public boolean onPreferenceChange(Preference preference, Object newValue) {
-        if (preference.getKey().equals(KEY_X_REALITY_ENGINE)) {
-            boolean isEnabled = (Boolean) newValue;
-            updateSeekBarsState(isEnabled);
-        }
-        return true;
-    }
-    
-    private void updateSeekBarsState(boolean isXRealityEngineEnabled) {
-        if (mColorBalanceRed != null) {
-            mColorBalanceRed.setEnabled(!isXRealityEngineEnabled);
-        }
-        if (mColorBalanceGreen != null) {
-            mColorBalanceGreen.setEnabled(!isXRealityEngineEnabled);
-        }
-        if (mColorBalanceBlue != null) {
-            mColorBalanceBlue.setEnabled(!isXRealityEngineEnabled);
-        }
-    }
-
     @Override
     public void onDetach() {
         if (mContentObserver != null) {
@@ -254,6 +215,16 @@ public class ColorModePreferenceFragment extends RadioButtonPickerFragment imple
             ColorBalancePreferenceController controller = new ColorBalancePreferenceController(
                     screen.getContext(), ColorBalancePreferenceController.channelToKey(channel));
             controller.displayPreference(screen);
+        }
+    }
+
+    @Override
+    public void updateCandidates() {
+        super.updateCandidates();
+        PreferenceScreen screen = getPreferenceScreen();
+        if (ColorDisplayManager.isColorTransformAccelerated(screen.getContext())) {
+            getPreferenceManager().inflateFromResource(screen.getContext(), R.xml.color_mode_settings,
+                    screen);
         }
     }
 
