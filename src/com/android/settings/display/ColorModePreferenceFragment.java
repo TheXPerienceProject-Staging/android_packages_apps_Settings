@@ -55,7 +55,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-import com.crdroid.settings.preferences.SecureSettingSwitchPreference;
+import mx.xperience.framework.preference.SecureSettingSwitchPreference;
 
 @SuppressWarnings("WeakerAccess")
 @SearchIndexable
