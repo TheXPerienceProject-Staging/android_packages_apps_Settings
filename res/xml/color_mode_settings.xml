@@ -21,11 +21,6 @@
     android:title="@string/color_mode_title">
 
     <PreferenceCategory
-        android:key="color_balance_category"
-        android:title="@string/color_mode_balance_category"
-        android:order="100">
-
-    <PreferenceCategory
         android:key="display_engine_category"
         android:title="@string/display_engine_category"
         android:order="100">
@@ -45,6 +40,11 @@
             android:selectable="false"
             settings:searchable="false" />
     </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="color_balance_category"
+        android:title="@string/color_mode_balance_category"
+        android:order="100">
 
         <SeekBarPreference
             android:key="color_balance_red"
