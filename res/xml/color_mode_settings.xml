@@ -44,7 +44,7 @@
     <PreferenceCategory
         android:key="color_balance_category"
         android:title="@string/color_mode_balance_category"
-        android:order="100">
+        android:order="101">
 
         <SeekBarPreference
             android:key="color_balance_red"
