@@ -192,31 +192,6 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
                         (LayoutPreference) getPreferenceScreen().findPreference("top_level_homepage_banner_view");
         final LayoutPreference widgetPreference =
                         (LayoutPreference) getPreferenceScreen().findPreference("top_level_homepage_widgets");
-        if (bannerPreference != null) {
-            /*final ImageView avatarView = bannerPreference.findViewById(R.id.account_avatar);
-            avatarView.setImageDrawable(getCircularUserIcon(getActivity()));
-            avatarView.bringToFront();
-            avatarView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    launchComponent("com.android.settings", "com.android.settings.Settings$UserSettingsActivity");
-                }
-            });*/
-            final String wppClass = getContext().getResources().getString(R.string.config_styles_and_wallpaper_picker_class);
-            final String wppPkg = getContext().getResources().getString(R.string.config_wallpaper_picker_package);
-            final String wppExtraIntent = getContext().getResources().getString(R.string.config_wallpaper_picker_launch_extra);
-            final Intent wallpaperIntent = new Intent()
-                    .setComponent(new ComponentName(wppPkg, wppClass))
-                    .putExtra(wppExtraIntent, "app_launched_settings")
-                    .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            final View bannerView = bannerPreference.findViewById(R.id.homepage_banner);
-            bannerView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    startActivity(wallpaperIntent);
-                }
-            });
-        }
         if (widgetPreference != null) {
             // widgets elements
             final ImageView searchIcon = widgetPreference.findViewById(R.id.search_widget_icon);
@@ -231,26 +206,12 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
             });
 
             // widgets
-            final View batteryView = widgetPreference.findViewById(R.id.battery_widget);
-            batteryView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    launchComponent("com.android.settings", "com.android.settings.Settings$PowerUsageSummaryActivity");
-                }
-            });
             final View searchView = widgetPreference.findViewById(R.id.search_widget);
             final View systemView = widgetPreference.findViewById(R.id.system_widget);
             systemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     launchComponent("com.android.settings", "com.android.settings.Settings$SystemDashboardActivity");
-                }
-            });
-            final View storageView = widgetPreference.findViewById(R.id.storage_widget);
-            storageView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    launchComponent("com.android.settings", "com.android.settings.Settings$StorageDashboardActivity");
                 }
             });
             final FragmentActivity activity = getActivity();
