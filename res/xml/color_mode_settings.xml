@@ -25,7 +25,7 @@
         android:title="@string/display_engine_category"
         android:order="100">
 
-        <mx.xperience.framework.preference.SecureSettingListPreference
+        <mx.xperience.framework.preference.CustomSecureSeekBarPreference
             android:key="display_engine_mode"
             android:title="@string/display_engine_mode_title"
             android:defaultValue="0"
