@@ -180,6 +180,13 @@
             settings:widgetLayout="@null"
             settings:keywords="@string/keywords_display_dc_dimming"/>
 
+        <!-- Pocket Judge -->
+        <mx.xperience.framework.preference.SecureSettingSwitchPreference
+            android:key="pocket_mode_enabled"
+            android:title="@string/pocket_judge_title"
+            android:summary="@string/pocket_judge_summary"
+            android:defaultValue="false" />
+
         <ListPreference
             android:key="custom_screen_resolution"
             android:title="@string/custom_screen_resolution_title"
