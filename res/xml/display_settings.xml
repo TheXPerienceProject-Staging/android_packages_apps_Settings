@@ -269,11 +269,11 @@
             android:summary="@string/theme_customization_lock_clock_summary"
             android:fragment="com.android.settings.xperience.LockClockFonts" />
 
-<!--        <Preference
+        <Preference
             android:key="android.theme.customization.icon_pack"
             android:title="@string/theme_customization_icon_pack_title"
             android:summary="@string/theme_customization_icon_pack_summary"
-            android:fragment="com.android.settings.xperience.StatusbarIcons" />-->
+            android:fragment="com.android.settings.xperience.StatusbarIcons" />
 
         <Preference
             android:key="android.customization.sb_data"
